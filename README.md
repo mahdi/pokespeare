@@ -1,4 +1,6 @@
 # Pokespeare API v1.0
+![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/mahdit/pokespeare)
+![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/mahdit/pokespeare)
 
 This is a simple REST API written in .NET 5 / ASP.NET WebAPI. It translates a Pokemon description (by getting its name) into its Shakespearean description! 
 
