@@ -35,3 +35,4 @@ dotnet test
 
 - [ ] Automatic image builds in Docker Hub is not working
 - [ ] Automatic "Open Issues" listing here is not working in GitHub Actions.
+- [ ] CodeQL code analysis is not working in GitHub Actions.
