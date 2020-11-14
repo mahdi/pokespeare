@@ -32,3 +32,6 @@ dotnet test
 <!-- issueTable -->
 
 <!-- issueTable -->
+
+- [ ] Automatic image builds in Docker Hub is not working
+- [ ] Automatic "Open Issues" listing here is not working in GitHub Actions.
