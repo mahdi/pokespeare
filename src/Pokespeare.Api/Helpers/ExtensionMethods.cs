@@ -4,8 +4,8 @@ using System.Text.RegularExpressions;
 namespace Pokespeare.Api.Helpers {
     
     public static class ExtensionMethods {
-        public static string CleanText(this string input) {
-            return Regex.Replace(input, @"\t|\\t|\n|\\n|\r|\\r|\f|\\f", " ");
+        public static string? CleanText(this string? input) {
+            return !String.IsNullOrEmpty(input) ? Regex.Replace(input, @"\t|\\t|\n|\\n|\r|\\r|\f|\\f", " ") : null;
         }
     }
 }
