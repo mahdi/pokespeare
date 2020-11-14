@@ -19,8 +19,9 @@ namespace Pokespeare.Api {
         public void ConfigureServices(IServiceCollection services) {
 
             services.AddControllers();
-            services.AddSwaggerGen(c => {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pokespeare API", Version = "v1" });
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo {Title = "Pokespeare API", Version = "v1"});
             });
             services.AddHttpClient("PokiApi", (provider, client) => {
                 client.BaseAddress = new Uri(Configuration["PokeApiEndPointUrl"]);

@@ -1,7 +1,5 @@
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /app
-EXPOSE 80 
-EXPOSE 443
 COPY . .
 RUN dotnet test
 WORKDIR "/app/src/Pokespeare.Api"

@@ -20,6 +20,9 @@ docker run --rm -p 5000:80 --name pokespeare pokespeare
 
 Now the application is running at `http://localhost:5000`; to call the API method send a `GET` request to `http://localhost:5000/pokemon/charizard`
 
+## API Documentation
+Swagger API docs are available at `https://localhost:5001/swagger` if you run the app without docker over HTTPS (`docker run`); I skipped explanations for HTTPs over docker as it's different on Windows and Linux and depends on various factors that are out of scope of purpose of this challenge.
+
 ## Tests
 Unit tests are available under `tests\Pokespeare.Api.Tests`; to run the tests using .NET CLI:
 ```
