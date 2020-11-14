@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using Pokespeare.Api.Models;
 using Pokespeare.Api.Services;
 
@@ -15,9 +16,22 @@ namespace Pokespeare.Api.Controllers
 
         [HttpGet]
         [Route("{name}")]
-        public Translation Get(string name) {
-            var translation = _apiService.GetShakespeareTranslation(_apiService.GetPokemonDescription(name).Result);
-            return new Translation { Name = name, Description = translation.Result };
+        public Translation Get(string name)
+        {
+            var translationResult = new Translation();
+            try
+            {
+                var translation = _apiService.GetShakespeareTranslation(_apiService.GetPokemonDescription(name).Result);
+                translationResult.Name = name;
+                translationResult.Description = translation.Result;
+            }
+            catch (Exception ex)
+            {
+                translationResult.Name = name;
+                translationResult.Description = ex.Message;
+            }
+
+            return translationResult;
         }
     }
 }
