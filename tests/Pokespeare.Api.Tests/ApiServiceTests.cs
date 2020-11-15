@@ -36,7 +36,7 @@ namespace Pokespeare.Api.Tests {
 
             // Act
             var service = new ApiService(httpClientFactory.Object);
-            var result = service.GetPokemonDescription("hey");
+            var result = await service.GetPokemonDescription("hey");
 
             // Assert
             httpClientFactory.Verify(f => f.CreateClient(It.IsAny<String>()), Times.Once);
@@ -65,10 +65,10 @@ namespace Pokespeare.Api.Tests {
 
             // Act
             var service = new ApiService(httpClientFactory.Object);
-            var result = service.GetPokemonDescription("hey");
+            var result = await service.GetPokemonDescription("hey");
 
             // Assert
-            Assert.Equal("Sorry! There is no description for hey in English to translate!", result.Result);
+            Assert.Equal("Sorry! There is no description for hey in English to translate!", result);
         }
         
         [Fact]
@@ -89,13 +89,13 @@ namespace Pokespeare.Api.Tests {
             var client = new HttpClient(mockHttpMessageHandler.Object);
             client.BaseAddress = fixture.Create<Uri>();
             httpClientFactory.Setup(_ => _.CreateClient(It.IsAny<string>())).Returns(client);
-
+            
             // Act
             var service = new ApiService(httpClientFactory.Object);
 
             // Assert
             var exception = Assert.ThrowsAsync<Exception>
-                (() => service.GetPokemonDescription("name"));
+                (async () => await service.GetPokemonDescription("name"));
             
             Assert.Contains("Sorry! Couldn't reach PokiAPI", exception.Result.Message);
         }
@@ -121,7 +121,7 @@ namespace Pokespeare.Api.Tests {
 
             // Act
             var service = new ApiService(httpClientFactory.Object);
-            var result = service.GetShakespeareTranslation("description");
+            var result = await service.GetShakespeareTranslation("description");
 
             // Assert
             httpClientFactory.Verify(f => f.CreateClient(It.IsAny<String>()), Times.Once);
@@ -153,7 +153,7 @@ namespace Pokespeare.Api.Tests {
 
             // Assert
             var exception = Assert.ThrowsAsync<Exception>
-                (() => service.GetShakespeareTranslation("description"));
+                (async () => await service.GetShakespeareTranslation("description"));
             
             Assert.Equal("API limit reached", exception.Result.Message);
         }
