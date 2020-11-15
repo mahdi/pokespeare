@@ -36,7 +36,7 @@ dotnet test
 
 <!-- issueTable -->
 
-- [ ] Automatic image builds in Docker Hub is not working
+- [X] Automatic image builds in Docker Hub is not working
 - [ ] Automatic "Open Issues" listing here is not working in GitHub Actions.
 - [ ] CodeQL code analysis is not working in GitHub Actions.
 - [ ] HTTPS over Docker.
