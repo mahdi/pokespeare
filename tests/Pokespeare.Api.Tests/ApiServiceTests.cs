@@ -94,10 +94,10 @@ namespace Pokespeare.Api.Tests {
             var service = new ApiService(httpClientFactory.Object);
 
             // Assert
-            var exception = Assert.ThrowsAsync<Exception>
-                (async () => await service.GetPokemonDescription("name"));
+            var exception = await Assert.ThrowsAsync<Exception>
+                ( () => service.GetPokemonDescription("name"));
             
-            Assert.Contains("Sorry! Couldn't reach PokiAPI", exception.Result.Message);
+            Assert.Contains("Sorry! Couldn't reach PokiAPI", exception.Message);
         }
 
         [Fact]
@@ -152,10 +152,10 @@ namespace Pokespeare.Api.Tests {
             var service = new ApiService(httpClientFactory.Object);
 
             // Assert
-            var exception = Assert.ThrowsAsync<Exception>
-                (async () => await service.GetShakespeareTranslation("description"));
+            var exception = await Assert.ThrowsAsync<Exception>
+                ( () => service.GetShakespeareTranslation("description"));
             
-            Assert.Equal("API limit reached", exception.Result.Message);
+            Assert.Equal("API limit reached", exception.Message);
         }
     }
 }
