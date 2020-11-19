@@ -68,6 +68,7 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
     - name: Build .NET 5
+      uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
     - run: dotnet build /p:UseSharedCompilation=false --configuration Release --no-restore
