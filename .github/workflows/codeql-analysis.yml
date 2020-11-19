@@ -35,10 +35,6 @@ jobs:
         dotnet-version: '5.0.x'
     - name: Install dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build /p:UseSharedCompilation=false --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
       
   analyze:
     name: Analyze
@@ -72,9 +68,7 @@ jobs:
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
 
-    #- run: |
-    #   make bootstrap
-    #   make release
+    - run: dotnet build /p:UseSharedCompilation=false --configuration Release --no-restore
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
